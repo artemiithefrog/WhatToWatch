@@ -11,6 +11,7 @@
 		162A49A22B5C35800014E252 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 162A49A12B5C35800014E252 /* ContentView.swift */; };
 		162A49A42B5C35830014E252 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 162A49A32B5C35830014E252 /* Assets.xcassets */; };
 		162A49A72B5C35830014E252 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 162A49A62B5C35830014E252 /* Preview Assets.xcassets */; };
+		166237092B6AA62700B46C0A /* Carousel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166237082B6AA62700B46C0A /* Carousel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +20,7 @@
 		162A49A12B5C35800014E252 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		162A49A32B5C35830014E252 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		162A49A62B5C35830014E252 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		166237082B6AA62700B46C0A /* Carousel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Carousel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,6 +54,7 @@
 			isa = PBXGroup;
 			children = (
 				162A499F2B5C35800014E252 /* WhatToWatchApp.swift */,
+				166237082B6AA62700B46C0A /* Carousel.swift */,
 				162A49A12B5C35800014E252 /* ContentView.swift */,
 				162A49A32B5C35830014E252 /* Assets.xcassets */,
 				162A49A52B5C35830014E252 /* Preview Content */,
@@ -137,6 +140,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				166237092B6AA62700B46C0A /* Carousel.swift in Sources */,
 				162A49A22B5C35800014E252 /* ContentView.swift in Sources */,
 				162A49A02B5C35800014E252 /* WhatToWatchApp.swift in Sources */,
 			);
