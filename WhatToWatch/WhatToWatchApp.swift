@@ -11,7 +11,7 @@ import SwiftUI
 struct WhatToWatchApp: App {
     var body: some Scene {
         WindowGroup {
-            Carousel()
+            ContentView()
                 .preferredColorScheme(.dark)
         }
     }
