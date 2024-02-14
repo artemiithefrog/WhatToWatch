@@ -8,15 +8,13 @@
 import SwiftUI
 
 struct ContentView: View {
-    
-    @State private var currentIndex: Int = 0
-    @GestureState private var dragOffset: CGFloat = 0
-    @State var colors: [Color] = [.red, .orange, .yellow, .green, .blue]
+
+    @StateObject private var movieStore = MovieStore()
     
     var body: some View {
-        NavigationStack {
+        NavigationView {
             Carousel()
-                .preferredColorScheme(.dark)
+                .navigationTitle("FilmCarousel")
         }
     }
 }
