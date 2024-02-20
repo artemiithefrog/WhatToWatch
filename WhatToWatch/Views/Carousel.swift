@@ -9,7 +9,7 @@ import SwiftUI
 
 struct Carousel: View {
     @State private var currentIndex: Int = 0
-    @GestureState private var dragOffset: CGFloat = 0
+//    @GestureState private var dragOffset: CGFloat = 0
     
     @State private var films = ["darkKnight", "ESB", "Godfather", "Jaws", "PulpFiction", "Shawshank"]
     
@@ -24,7 +24,7 @@ struct Carousel: View {
                             .cornerRadius(15)
                             .opacity(currentIndex == index ? 1.0 : 0.5)
                             .scaleEffect(currentIndex == index ? 1.2 : 0.8)
-                            .offset(x: CGFloat(index - currentIndex) * 500 + dragOffset,
+                            .offset(x: CGFloat(index - currentIndex) * 500,
                                     y: 0)
                     }
                 }
