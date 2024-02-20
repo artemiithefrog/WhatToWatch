@@ -9,7 +9,7 @@ import SwiftUI
 
 struct Movies: View {
     @Environment(\.dismiss) var dismiss
-    @StateObject private var movieStore = MovieStore()
+    @EnvironmentObject var movieStore: MovieStore
     
     private var data = Array(1...20)
     private let adaptiveColumn = [
@@ -25,6 +25,10 @@ struct Movies: View {
                         URLImage(url: movie.posterURL)
                             .frame(width: 150, height: 225, alignment: .center)
                             .cornerRadius(10)
+                            .onTapGesture {
+                                movieStore.selectedMovies.append(movie)
+                                print("Appended movie: \(movie.title)")
+                            }
                     }
                 }
             }
@@ -44,8 +48,4 @@ struct Movies: View {
             }
         }
     }
-}
-
-#Preview {
-    Movies()
 }
