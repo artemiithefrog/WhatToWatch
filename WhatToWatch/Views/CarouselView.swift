@@ -9,7 +9,7 @@ import SwiftUI
 
 struct CarouselView: View {
     
-    @StateObject var movieStore = MovieStore()
+    @EnvironmentObject var movieStore: MovieStore
     @State private var currentIndex: Int = 0
     @State private var showSelectedMovies = false
     @State private var movies: [Movie] = []
@@ -20,33 +20,35 @@ struct CarouselView: View {
                 ZStack {
                     ForEach(0..<movieStore.selectedMovies.count, id: \.self) { index in
                         URLImage(url: movieStore.selectedMovies[index].posterURL)
-                            .frame(width: 310, height: 175)
+                            .frame(width: 175, height: 310)
                             .cornerRadius(15)
                             .opacity(currentIndex == index ? 1.0 : 0.5)
                             .scaleEffect(currentIndex == index ? 1.2 : 0.8)
                             .offset(x: CGFloat(index - currentIndex) * 500,
                                     y: 0)
+                            .onChange(of: currentIndex) {
+                                print(index)
+                            }
                     }
                 }
+                
+                
                 if movieStore.selectedMovies.isEmpty {
-                    Text("Select Movies")
                 } else {
-                    Text("Selected movie: \(movieStore.selectedMovies[currentIndex].title)")
-                        .padding(.top, 20)
-                        .bold()
-                        .font(.system(size: 20))
+                    Button("Spin") {
+                        movies = movieStore.selectedMovies
+                        spinColors()
+                    }
+                    .bold()
+                    .tint(.white)
+                    .padding(.top, 25)
                 }
                 
                 Button("Select Movies") {
                     showSelectedMovies = true
                 }
                 .bold()
-                
-                Button("Spin") {
-                    movies = movieStore.selectedMovies
-                    spinColors()
-                }
-                .bold()
+                .tint(.white)
             }
             .sheet(isPresented: $showSelectedMovies) {
                 Movies()
@@ -55,25 +57,32 @@ struct CarouselView: View {
             .navigationTitle("FilmCarousel")
         }
     }
-
+    
     func spinColors() {
-        let spinCount = Int.random(in: 25...50)
+        let spinCount = Int.random(in: 75...125)
         var currentCount = 0
-        let addedFilms = spinCount / movieStore.selectedMovies.count
-        
-        for _ in 0...addedFilms {
-            movieStore.selectedMovies += movies
-        }
         
         _ = Timer.scheduledTimer(withTimeInterval: 0.05, repeats: true) { timer in
-            withAnimation {
-                currentIndex = (currentIndex + 1) % movieStore.selectedMovies.count
-                currentCount += 1
-                
-                if currentCount == spinCount {
-                    timer.invalidate()
-                    currentCount = 0
+            
+            currentCount += 1
+            
+            if currentIndex >= movieStore.selectedMovies.count - 1 {
+                currentIndex = 0
+            } else {
+                withAnimation {
+                    currentIndex += 1
                 }
+            }
+            
+            withAnimation {
+                movieStore.selectedMovies.append(movieStore.selectedMovies.first!)
+                movieStore.selectedMovies.remove(at: 0)
+            }
+            
+            
+            if currentCount == spinCount {
+                timer.invalidate()
+                currentCount = 0
             }
         }
     }
